@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数位板笔迹</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .page-group{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            margin: 0 auto;
+        }
+        .page-btn{
+            margin-left: 20px;
+        }
+        #digital-page{
+            margin: 0;
+            padding: 0;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="digital-page" width="700" height="990"></canvas>
+    <div class="page-group">
+        <button class="page-btn" onclick="drawDigitalPage(0)">Page 1</button>
+        <button class="page-btn" onclick="drawDigitalPage(1)">Page 2</button>
+        <button class="page-btn" onclick="drawDigitalPage(2)">Page 3</button>
+        <button class="page-btn" onclick="drawDigitalPage(3)">Page 4</button>
+        <button class="page-btn" onclick="drawDigitalPage(4)">Page 5</button>
+        <button class="page-btn" onclick="drawDigitalPage(5)">Page 6</button>
+        <button class="page-btn" onclick="drawDigitalPage(6)">Page 7</button>
+        <button class="page-btn" onclick="drawDigitalPage(7)">Page 8</button>
+    </div>
+</body>
+
+<script src="digital.js"></script>
+
+</html>
