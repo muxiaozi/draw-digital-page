@@ -66,15 +66,18 @@ function drawDigitalPage(index){
     
     ctx.strokeStyle = 'black';
     ctx.beginPath();
+    let start_time = page[0].t;
     for(let i = 0; i < page.length; i++){
-        if(page[i].p === 0){
-            ctx.moveTo(Math.round(page[i].x / 30),Math.round( page[i].y/30))
-        }else{
-            ctx.lineTo(Math.round(page[i].x / 30),Math.round( page[i].y/30))
-        }
+        setTimeout(() => {
+            if(page[i].p === 0){
+                ctx.moveTo(Math.round(page[i].x / 30),Math.round( page[i].y/30))
+            }else{
+                ctx.lineTo(Math.round(page[i].x / 30),Math.round( page[i].y/30))
+            }
+            ctx.stroke();
+        }, page[i].t - start_time);
     }
     ctx.closePath();
-    ctx.stroke();
 }
 
 // 获取数据
