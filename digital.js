@@ -1,5 +1,6 @@
 // 保存页面数据缓存
 let global_data;
+let cur_path = [];
 
 // 解析头部
 function parserHead(array_buffer) {
@@ -62,13 +63,18 @@ function drawDigitalPage(index){
     let ctx = canvas.getContext('2d')
     let page = global_data[index];
 
+    // 清除当前正在绘制的路径
+    if(cur_path.length > 0){
+        cur_path.forEach(draw_path => clearTimeout(draw_path));
+        cur_path.splice(0);
+    }
+
     ctx.clearRect(0, 0, 700, 990);
-    
     ctx.strokeStyle = 'black';
     ctx.beginPath();
     let start_time = page[0].t;
     for(let i = 0; i < page.length; i++){
-        setTimeout(() => {
+        let draw_path = setTimeout(() => {
             if(page[i].p === 0){
                 ctx.moveTo(Math.round(page[i].x / 30),Math.round( page[i].y/30))
             }else{
@@ -76,6 +82,7 @@ function drawDigitalPage(index){
             }
             ctx.stroke();
         }, page[i].t - start_time);
+        cur_path.push(draw_path)
     }
     ctx.closePath();
 }
