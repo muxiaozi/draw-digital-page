@@ -1,6 +1,7 @@
 // 保存页面数据缓存
 let global_data;
 let cur_path = [];
+let time_clock = null;
 
 // 解析头部
 function parserHead(array_buffer) {
@@ -63,10 +64,16 @@ function drawDigitalPage(index){
     let ctx = canvas.getContext('2d')
     let page = global_data[index];
 
+    let progress = document.getElementById('progress');
+
     // 清除当前正在绘制的路径
     if(cur_path.length > 0){
         cur_path.forEach(draw_path => clearTimeout(draw_path));
         cur_path.splice(0);
+    }
+    if(time_clock){
+        clearInterval(time_clock);
+        time_clock = null;
     }
 
     ctx.clearRect(0, 0, 700, 990);
@@ -85,6 +92,16 @@ function drawDigitalPage(index){
         cur_path.push(draw_path)
     }
     ctx.closePath();
+
+    let time_clock_start = Date.now();
+    progress.max = page[page.length-1].t-start_time;
+    time_clock = setInterval(() => {
+        progress.value=Date.now() - time_clock_start;
+        if(progress.value === progress.max){
+            clearInterval(time_clock);
+            time_clock = null;
+        }
+    }, 1);
 }
 
 // 获取数据

@@ -12,9 +12,7 @@
         .page-group{
             position: absolute;
             left: 0;
-            right: 0;
             top: 0;
-            margin: 0 auto;
         }
         .page-btn{
             margin-left: 20px;
@@ -23,6 +21,13 @@
             margin: 0;
             padding: 0;
             border: 1px solid black;
+        }
+        #progress{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 30px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -38,6 +43,7 @@
         <button class="page-btn" onclick="drawDigitalPage(5)">Page 6</button>
         <button class="page-btn" onclick="drawDigitalPage(6)">Page 7</button>
         <button class="page-btn" onclick="drawDigitalPage(7)">Page 8</button>
+        <progress id="progress"></progress>
     </div>
 </body>
 
