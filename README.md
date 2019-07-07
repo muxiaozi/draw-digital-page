@@ -2,7 +2,7 @@
 
 使用Web Canvas绘制数位板数据到网页中
 
-![](temp1.jpg)
+![](temp1.gif)
 
 ## 使用方法
 
